@@ -70,4 +70,41 @@ def calculates_results_stats(results_dic):
     """        
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
-    return None
+    results_stats_dic = dict()
+    print("***Start caclulates_results_stats.py")
+    # Calculate n_images
+    results_stats_dic['n_images'] = len(results_dic)
+
+#            n_dogs_img - number of dog images
+#            n_notdogs_img - number of NON-dog images
+#            n_match - number of matches between pet & classifier labels
+#            n_correct_dogs - number of correctly classified dog images
+#            n_correct_notdogs - number of correctly classified NON-dog images
+#            n_correct_breed - number of correctly classified dog breeds
+
+#Initialize counts to 0
+    results_stats_dic['n_dogs_img'] = 0
+    results_stats_dic['n_notdogs_img'] = 0
+    results_stats_dic['n_match'] = 0
+    results_stats_dic['n_correct_dogs'] = 0
+    results_stats_dic['n_correct_breed'] = 0
+
+    for filename in results_dic.keys():
+        if results_dic[filename][3] == 1:
+            # number of dog images
+            results_stats_dic['n_dogs_img'] += 1
+        else:
+            # number of non-dog images
+            results_stats_dic['n_notdogs_img'] += 1   
+        if results_dic[filename][2] == 1:
+            # number of matches between pet and classifier labels
+            results_stats_dic['n_match'] += 1
+        if (results_dic[filename][3] == 1) and (results_dic[filename][4] == 1):
+            # number of correctly classified dog images
+            results_stats_dic['n_correct_dogs'] += 1
+        if (results_dic[filename][3] == 1) and (results_dic[filename][2] == 1):
+            # number of correctly classified dog breeds
+            results_stats_dic['n_correct_breed'] += 1
+    print("Results_stats_dic is: ", results_stats_dic)
+    print("***Leaving caclulates_results_stats.py")
+    return results_stats_dic
