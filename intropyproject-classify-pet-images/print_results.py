@@ -63,6 +63,7 @@ def print_results(results_dic, results_stats_dic, model,
            None - simply printing results.
     """    
     
+    print()
     print("*** Results ***")
     print(model, "-- CNN model architecture")
     print(results_stats_dic['n_images'], "-- Number of images")
@@ -72,12 +73,14 @@ def print_results(results_dic, results_stats_dic, model,
         if key[0:3] == 'pct':
             print(results_stats_dic[key], "-- ", key)
     if print_incorrect_dogs == True:
+        print()
         print("*** Incorrect Dogs ***")
         for key in results_dic.keys():
             if sum(results_dic[key][3:]) == 1:
                 print(results_dic[key][0], "-- Pet Image Label\t", results_dic[key][1], "-- Classifier Label")
-    print()
+    
     if print_incorrect_breed == True:
+        print()
         print("*** Incorrect Breed ***")
         for key in results_dic.keys():
             if (sum(results_dic[key][3:]) == 2) and (results_dic[key][2] == 0):
