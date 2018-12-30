@@ -62,5 +62,18 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
+    
+    print("*** Started print_results.py")
+    print()
+    print(model, "-- CNN model architecture")
+    print(results_stats_dic['n_images'], "-- Number of images")
+    print(results_stats_dic['n_dogs_img'], "-- Number of Dog Images")
+    print(results_stats_dic['n_notdogs_img'], "-- Number of \"Not-a\" Dog Images")
+    for key in results_stats_dic.keys():
+        if key[0:3] == 'pct':
+            print(results_stats_dic[key], "-- ", key)
+    
+    print()
+    print("***Leaving print_results.py")
     None
                 
